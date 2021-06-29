@@ -27,6 +27,7 @@ pipeline{
                     withAWS(credentials: 'aws-credentials') {
                         sh 'serverless deploy'
                     }
+                }
             }
         }
     }
