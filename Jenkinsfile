@@ -3,10 +3,12 @@ pipeline{
     stages{
         stage('build sin test'){
             steps {
-                sh 'npm install'
-                sh 'npm rebuild'
-                sh 'npm run build --skip-test --if-present'
-                // stash name: "ws", includes: "**"
+                nodejs(nodeJSInstallationName: 'nodejs'){
+                    sh 'npm install'
+                    sh 'npm rebuild'
+                    sh 'npm run build --skip-test --if-present'
+                    // stash name: "ws", includes: "**"
+                }
             }
         }
         stage('unitTest') {
