@@ -14,7 +14,7 @@ pipeline{
         stage('unitTest') {
             steps {
                 //unstash "ws"
-                nodejs(nodeJSInstallationName:. 'nodejs') {
+                nodejs(nodeJSInstallationName: 'nodejs') {
                     sh 'npm run test:coverage && cp coverage/lcov.info lcov.info || echo "Code
                         coverage failed"'
                     archiveArtifacts(artifacts: 'coverage/**', onlyIfSuccessful: true)
